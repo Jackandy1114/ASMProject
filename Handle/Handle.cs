@@ -425,7 +425,7 @@ select ISNULL(max(IdClass),0) as maxID from class
                             maxClassID.Close();
                             program2(@$"
 update Student 
-set Name = '{sv.Name}',Mark = {sv.Mark},Email = '{sv.Email}', IdClass = {sv.idClass}
+set Name = N'{sv.Name}',Mark = {sv.Mark},Email = '{sv.Email}', IdClass = {sv.idClass}
 where StId = {StId}
 select * from student where StId ={StId}");
 
