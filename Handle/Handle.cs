@@ -286,6 +286,10 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
                         }
                     case 2:
                         {
+                            if (StId == 0)
+                            {
+                                program4_1(ref StId);
+                            }
                             program4_2(StId);
                             break;
                         }
@@ -411,16 +415,20 @@ select * from student where StId ={StId}");
                             connection.Open();//NOTE open connection C# to SQLserver
                             using DbCommand command = new SqlCommand();
                             command.Connection = connection;
+                            command.CommandText = @"
+select ISNULL(max(IdClass),0) as maxID from class
+";
                             var maxClassID = command.ExecuteReader();
                             maxClassID.Read();
                             numberClassID = Convert.ToInt32(maxClassID["maxID"]);
-                            maxClassID.Close();
                             Student sv = new Student(StId, numberClassID);
+                            maxClassID.Close();
                             program2(@$"
 update Student 
-set Name = {sv.Name},Mark = {sv.Mark},Email = {sv.Email}, IdClass = {sv.idClass}
+set Name = '{sv.Name}',Mark = {sv.Mark},Email = '{sv.Email}', IdClass = {sv.idClass}
 where StId = {StId}
 select * from student where StId ={StId}");
+
                             break;
                         }
 
