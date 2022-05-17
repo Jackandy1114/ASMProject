@@ -23,7 +23,7 @@ namespace adonet
             } while (string.IsNullOrEmpty(Name) || string.IsNullOrWhiteSpace(Name));
             bool test = true;
             double mark;
-            int idtemp;
+            int idTemp;
             do
             {
                 Write("Nhập điểm: ");
@@ -39,9 +39,9 @@ namespace adonet
             do
             {
                 Write("Nhập idClass: ");
-                test = int.TryParse(ReadLine(), out idtemp);
-            } while (idtemp > numberClassID || test == false);
-            idClass = idtemp;
+                test = int.TryParse(ReadLine(), out idTemp);
+            } while (idTemp > numberClassID || test == false);
+            idClass = idTemp;
         }
 
     }

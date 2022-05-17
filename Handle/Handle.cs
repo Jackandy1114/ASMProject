@@ -527,7 +527,44 @@ Group by Class.IdClass, Class.NameClass;
              });
             DTB.Start(TaskScheduler.Current);
             t2.Start();
+        }
 
+        public static void program8()
+        {
+            string J_A = @"
+                Chào bạn tui là Trần Phú Đạt
+            Nickname J.A đến từ Dotnet Universe
+                  Sinh viên FPoly khóa 17            
+            ", dotnet_Universe = @"
+            Dotnet Universe khởi nguồn ban đầu là một CLB trường vì trường không có bất kì CLB nào
+            Dành cho sinh viền theo .Net Nên chúng mình 9 thành viên đầu tiên là sinh viên của Khóa 17
+            đã đồng lòng cùng xây dựng lên Dotnet Universe cùng cố gắng để không phải ai cô đơn học code.
+            Gồm:
+            - J.A: Trần Phú Đạt,
+            - Thái Dân,
+            - Đăng Duy,
+            - Gia Hân,
+            - Như Ý,
+            - Văn Quỳnh,
+            - Tuyết Nhi,
+            - Sâm Chấn,
+            - Đình Hướng.
+
+            Dotnet Universe - 10 - 5 - 2022.Net
+            Đây sẽ là một kỷ nguyên mới nơi tất cả mọi người đều không bị bỏ lại phía sau...
+            Learning With 100% Focus.
+            Learning With 80%  Passion.
+            Learning With 50%  Love.
+            Learning With 20%  Negative.
+            And
+            Learning With 0%   loneliness.
+
+            Rất mong có được sự tin yêu từ các đồng môn C#, .Net";
+
+            centerWrite(35);
+            WriteLine(J_A);
+            WriteLine(dotnet_Universe);
+            notification1();
 
         }
 
@@ -596,11 +633,11 @@ Group by Class.IdClass, Class.NameClass;
 ||                     _   .-')       ('-.       .-') _                                   ||    
 ||                    ( '.( OO )_   _(  OO)     ( OO ) )                                  ||
 ||                     ,--.   ,--.)(,------.,--./ ,--,' ,--. ,--.                         ||
-||                     |   `.'   |  |  .---'|   \ |  |\ |  | |  |                         ||
+||                     |   `.'   |  |  .---'|   \ |  |\ |  | |  | Trần Phú Đạt - AKA: J.A ||
 ||                     |         |  |  |    |    \|  | )|  | | .-')                       ||
-||                     |  |'.'|  | (|  '--. |  .     |/ |  |_|( OO )                      ||
+||                     |  |'.'|  | (|  '--. |  .     |/ |  |_|( OO )  From:DotNetUniverse ||
 ||                     |  |   |  |  |  .--' |  |\    |  |  | | `-' /                      ||
-||                     |  |   |  |  |  `---.|  | \   | ('  '-'(_.-'                       ||
+||                     |  |   |  |  |  `---.|  | \   | ('  '-'(_.-'             With Love ||
 ||                     `--'   `--'  `------'`--'  `--'   `-----'                          ||
 ||----------------------------------------------------------------------------------------||
 ||                            1.  Nhập danh sách Class/Student                            ||
@@ -610,6 +647,7 @@ Group by Class.IdClass, Class.NameClass;
 ||                            5.  Sắp xếp Student theo Mark cao đến thấp                  ||
 ||                            6.  Xuất 5 Student có Mark cao nhất                         ||
 ||                            7.  Tính điểm trung bình và ghi vào file                    ||
+||                            8.  Thông tin người thực hiện                               ||
 ||________________________________________________________________________________________||
 ||                                0. Thoát chương trình                                   ||
 [[========================================================================================]]";
@@ -764,17 +802,17 @@ Group by Class.IdClass, Class.NameClass;
 }
 
 /*
-Trần Hoàng
+Người Yêu Đạt
 9.2
 jackandy249@gmail.com
 1
 y
-Trần Hoàng
+Người Yêu Hoàng
 7.2
 andy249@gmail.com
-1
+8
 y
-Trần Đạt
+Đứa không yêu Hoàng
 5.2
 jack@gmail.com
 2
