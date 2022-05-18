@@ -1,6 +1,6 @@
 //NOTE download Data.SqlClient Packages on nuget.org by command: dotnet add package System.Data.SqlClient
-using System.Data.Common;
-using System.Data.SqlClient;
+// using System.Data.Common;
+// using System.Data.SqlClient;
 using static System.Console;
 namespace adonet
 {
