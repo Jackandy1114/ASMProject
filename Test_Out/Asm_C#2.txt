@@ -1,6 +1,0 @@
-| IDclass    | NameClass  | DTB        |
-| 2          | C#2        | 6.15       |
-| 3          | C#4        | 3          |
-| 4          | Marketing  | 4.42       |
-| 5          | UDPM       | 10         |
-| 7          | Youtube    | 6.67       |

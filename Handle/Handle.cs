@@ -70,14 +70,14 @@ namespace adonet
             command.CommandText = @$"
             select * from Class
             ";
-            var datareader_local = command.ExecuteReader();
+            var dataReader_local = command.ExecuteReader();
             string col_1 = "IdClass", col_2 = "NameClass";
             WriteLine($"| {col_1,-10} | {col_2,-10} |");
-            while (datareader_local.Read())
+            while (dataReader_local.Read())
             {
-                WriteLine($"| {datareader_local["IdClass"],-10} | {datareader_local["NameClass"],-10}");
+                WriteLine($"| {dataReader_local["IdClass"],-10} | {dataReader_local["NameClass"],-10}");
             }
-            datareader_local.Close();
+            dataReader_local.Close();
             connection.Close();
             centerWrite(32);
             WriteLine("Connection to database is " + connection.State);
@@ -105,14 +105,14 @@ select ISNULL(max(IdClass),0) as maxID from class
             command.CommandText = @$"
             select * from Class
             ";
-            var datareader_local = command.ExecuteReader();
+            var dataReader_local = command.ExecuteReader();
             string col_1 = "IdClass", col_2 = "NameClass";
             WriteLine($"| {col_1,-10} | {col_2,-10} |");
-            while (datareader_local.Read())
+            while (dataReader_local.Read())
             {
-                WriteLine($"| {datareader_local["IdClass"],-10} | {datareader_local["NameClass"],-10}");
+                WriteLine($"| {dataReader_local["IdClass"],-10} | {dataReader_local["NameClass"],-10}");
             }
-            datareader_local.Close();
+            dataReader_local.Close();
             centerWrite(50);
             WriteLine("___________________ Request: a ___________________");
 
@@ -124,8 +124,8 @@ set identity_insert Class on;
 insert into dbo.Class(IdClass,NameClass)
 values ({cls.IdClass}, N'{cls.NameClass}')
 ";
-                var datareader_inFor = command.ExecuteReader();//NOTE execute SQL command...
-                datareader_inFor.Close();
+                var dataReader_inFor = command.ExecuteReader();//NOTE execute SQL command...
+                dataReader_inFor.Close();
                 WriteLine();
                 Write("Continue to enter? (y/n): ");
                 String? n = ReadLine();
@@ -185,8 +185,8 @@ set identity_insert dbo.Student on;
 insert into dbo.Student (StId,Name,Mark,Email,idClass)
 values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
 ";
-                    var datareader_inFor = command.ExecuteReader();//NOTE execute SQL command...
-                    datareader_inFor.Close();
+                    var dataReader_inFor = command.ExecuteReader();//NOTE execute SQL command...
+                    dataReader_inFor.Close();
                     WriteLine();
                     Write("Continue to enter? (y/n): ");
                     String? n = ReadLine();
@@ -219,16 +219,16 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
             command.CommandText = @$"
 {CommandSQL}
 ";
-            var datareader_local = command.ExecuteReader();
+            var dataReader_local = command.ExecuteReader();
             string col_1 = "StId", col_2 = "Name", col_3 = "Mark", col_4 = "Rank", col_5 = "Email", col_6 = "IdClass";
             WriteLine($"|| {col_1,-4} | {col_2,-20} | {col_3,-5} | {col_4,-10} | {col_5,-25} | {col_6,-7} ||");
             WriteLine("".PadRight(92, '-'));
-            while (datareader_local.Read())
+            while (dataReader_local.Read())
             {
-                WriteLine($"|| {datareader_local["StId"],-4} | {datareader_local["Name"],-20} | {datareader_local["Mark"],-5} | {handleRank(Convert.ToDouble(datareader_local["Mark"])),-10} | {datareader_local["Email"],-25} | {datareader_local["IdClass"],-7} ||");
+                WriteLine($"|| {dataReader_local["StId"],-4} | {dataReader_local["Name"],-20} | {dataReader_local["Mark"],-5} | {handleRank(Convert.ToDouble(dataReader_local["Mark"])),-10} | {dataReader_local["Email"],-25} | {dataReader_local["IdClass"],-7} ||");
                 WriteLine("".PadRight(92, '-'));
             }
-            datareader_local.Close();
+            dataReader_local.Close();
             connection.Close();
             centerWrite(32);
             WriteLine("Connection to database is " + connection.State);
@@ -494,19 +494,19 @@ select Class.IdClass, Class.NameClass, AVG(Mark) as DTB
 from Student inner join Class on Student.idClass = Class.idClass 
 Group by Class.IdClass, Class.NameClass;
 ";
-                   var datareader_local = command.ExecuteReader();
+                   var dataReader_local = command.ExecuteReader();
                    string col_1 = "IDclass", col_2 = "NameClass", col_3 = "DTB";
                    writer.WriteLineAsync($"| {col_1,-10} | {col_2,-10} | {col_3,-10} |");
-                   lock (datareader_local)
+                   lock (dataReader_local)
                    {
-                       while (datareader_local.Read())
+                       while (dataReader_local.Read())
                        {
                            Thread.Sleep(400);
-                           writer.WriteLineAsync($"| {datareader_local["IdClass"],-10} | {datareader_local["NameClass"],-10} | {Math.Round(Convert.ToDouble(datareader_local["DTB"]), 2),-10} |");
-                           centerWrite(30);
-                           WriteLine("*********** Success ***********");
+                           writer.WriteLineAsync($"| {dataReader_local["IdClass"],-10} | {dataReader_local["NameClass"],-10} | {Math.Round(Convert.ToDouble(dataReader_local["DTB"]), 2),-10} |");
                        }
-                       datareader_local.Close();
+                       centerWrite(31);
+                       WriteLine("*********** Success ***********");
+                       dataReader_local.Close();
                        connection.Close();
                    }
 
@@ -516,17 +516,18 @@ Group by Class.IdClass, Class.NameClass;
              {
                  lock (DTB)
                  {
-                     WriteLine();
                      string Dat = "TRẦN PHÚ ĐẠT";
                      for (int i = 0; i < Dat.Length; i++)
                      {
-                         Thread.Sleep(100);
-                         Console.Write("\n" + Dat[i]);
+                         Thread.Sleep(200);
+                         Console.Write(Dat[i]);
                      }
+                     Console.WriteLine();
                  }
              });
             DTB.Start(TaskScheduler.Current);
             t2.Start();
+
         }
 
         public static void program8()
@@ -653,9 +654,7 @@ Group by Class.IdClass, Class.NameClass;
 [[========================================================================================]]";
             WriteLine(menu);
             ResetColor();
-
             centerWrite(6); Write("Nhập: ");
-
             byte choices = Convert.ToByte(ReadLine());
             return choices;
         }
