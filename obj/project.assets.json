@@ -450,28 +450,35 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "System.Data.SqlClient >= 4.8.3"
+      "System.Data.SqlClient >= 4.8.3",
+      "runtime.win-x64.runtime.native.System.Data.SqlClient.sni >= 4.4.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dattr\\.nuget\\packages\\": {}
+    "C:\\Users\\dattr\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Code\\CSharp\\School\\WorkingLab\\Net102\\ASMCSharp\\ASM_ps22352\\ASMProject\\ASMProject.csproj",
+      "projectUniqueName": "D:\\Code\\C#\\ASMProject\\ASMProject.csproj",
       "projectName": "ASMProject",
-      "projectPath": "D:\\Code\\CSharp\\School\\WorkingLab\\Net102\\ASMCSharp\\ASM_ps22352\\ASMProject\\ASMProject.csproj",
+      "projectPath": "D:\\Code\\C#\\ASMProject\\ASMProject.csproj",
       "packagesPath": "C:\\Users\\dattr\\.nuget\\packages\\",
-      "outputPath": "D:\\Code\\CSharp\\School\\WorkingLab\\Net102\\ASMCSharp\\ASM_ps22352\\ASMProject\\obj\\",
+      "outputPath": "D:\\Code\\C#\\ASMProject\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\dattr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\dattr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -493,6 +500,10 @@
           "System.Data.SqlClient": {
             "target": "Package",
             "version": "[4.8.3, )"
+          },
+          "runtime.win-x64.runtime.native.System.Data.SqlClient.sni": {
+            "target": "Package",
+            "version": "[4.4.0, )"
           }
         },
         "imports": [
@@ -510,7 +521,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
