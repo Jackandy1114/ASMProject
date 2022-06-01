@@ -57,7 +57,7 @@ namespace adonet
         public static void program1_1()
         {
 
-            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -85,7 +85,7 @@ namespace adonet
         }
         public static void program1_2()
         {
-            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -142,7 +142,7 @@ values ({cls.IdClass}, N'{cls.NameClass}')
         }
         public static void program1_3() //REVIEW nhập danh sách student và class
         {
-            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -206,12 +206,12 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
         #region Output
         public static void program2(string CommandSQL) //REVIEW xuất danh sach đồng thời xuất xếp loại
         {
-            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
             connection.Open();//NOTE open connection C# to SQLserver
-            centerWrite(30);
+            centerWrite(30); //NOTE Căng giữa chữ
             WriteLine("Connection to database is " + connection.State);
 
             using DbCommand command = new SqlCommand();
@@ -231,6 +231,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
             dataReader_local.Close();
             connection.Close();
             centerWrite(32);
+            
             WriteLine("Connection to database is " + connection.State);
             notification1();
         }
@@ -255,6 +256,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
                 Write("Nhập khoảng điểm b: ");
                 test = Double.TryParse(ReadLine(), out mark);
             } while (test == false || mark < 0 || mark > 10);
+            
             Mark_b = mark;
             if (Mark_b < Mark_a)
             {
@@ -379,7 +381,7 @@ select * from student where StId ={StId}");
                         }
                     case 4:
                         {
-                            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                             //NOTE sqlServer infomation connect
 
                             using var connection = new SqlConnection(sqlStringConnection);
@@ -409,7 +411,7 @@ select * from student where StId ={StId}");
                     case 5:
                         {
                             int numberClassID;
-                            var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                             //NOTE sqlServer infomation connect
                             using var connection = new SqlConnection(sqlStringConnection);
                             connection.Open();//NOTE open connection C# to SQLserver
@@ -481,7 +483,7 @@ select * from student where StId ={StId}");
                FileInfo file = new FileInfo("Test_Out\\Asm_C#2.txt");
                using (StreamWriter writer = file.AppendText())
                {
-                   var sqlStringConnection = "Data Source=TRANHOANG\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                   var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                    //NOTE sqlServer infomation connect
 
                    using var connection = new SqlConnection(sqlStringConnection);
@@ -496,7 +498,7 @@ Group by Class.IdClass, Class.NameClass;
 ";
                    var dataReader_local = command.ExecuteReader();
                    string col_1 = "IDclass", col_2 = "NameClass", col_3 = "DTB";
-                   writer.WriteLineAsync($"| {col_1,-10} | {col_2,-10} | {col_3,-10} |");
+                   writer.WriteLineAsync($"________________________________________\n| {col_1,-10} | {col_2,-10} | {col_3,-10} |");
                    lock (dataReader_local)
                    {
                        while (dataReader_local.Read())

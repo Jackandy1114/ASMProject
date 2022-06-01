@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sR/DLYkFLmctBCa+negpsVAg1pt15IGZwyCGoByKVl/NhH7cmmMfuQvNfWLSCP8cvI4f3YP66pNe4lSphsCwNw==",
+  "dgSpecHash": "Fi1B2XbkeqgbWQ6OIUdJx+OzE8lwDiTdDjo00MIXzCniY1p0yDgRNTTNGgYuWOlkPn5iCLaIf5YAJIxiUiT0EQ==",
   "success": true,
-  "projectFilePath": "D:\\Code\\C#\\ASMProject\\ASMProject.csproj",
+  "projectFilePath": "D:\\Code\\C#\\School\\NET2\\ASMProject\\ASMProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dattr\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\dattr\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

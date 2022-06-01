@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\C#\\ASMProject\\ASMProject.csproj": {}
+    "D:\\Code\\C#\\School\\NET2\\ASMProject\\ASMProject.csproj": {}
   },
   "projects": {
-    "D:\\Code\\C#\\ASMProject\\ASMProject.csproj": {
+    "D:\\Code\\C#\\School\\NET2\\ASMProject\\ASMProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\C#\\ASMProject\\ASMProject.csproj",
+        "projectUniqueName": "D:\\Code\\C#\\School\\NET2\\ASMProject\\ASMProject.csproj",
         "projectName": "ASMProject",
-        "projectPath": "D:\\Code\\C#\\ASMProject\\ASMProject.csproj",
+        "projectPath": "D:\\Code\\C#\\School\\NET2\\ASMProject\\ASMProject.csproj",
         "packagesPath": "C:\\Users\\dattr\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\C#\\ASMProject\\obj\\",
+        "outputPath": "D:\\Code\\C#\\School\\NET2\\ASMProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
