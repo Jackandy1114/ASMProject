@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Text;
+using static adonet.Handing;
 
 //NOTE download Data.SqlClient Packages on nuget.org by command: dotnet add package System.Data.SqlClient
 namespace adonet
 {
     class Program
     {
+        // public static string dataSource()
+        // {
+        //     centerWrite(17);
+        //     Console.WriteLine("Nhập tên server: ");
+        //     string dataSource = Console.ReadLine();
+        //     string[] strings = dataSource.Split("\\");
+        //     strings[0] = strings[0] + "\\\\";
+        //     dataSource = string.Concat(strings[0], strings[1]);
+        //     Console.WriteLine(dataSource);
+        //     return dataSource;
+        // }
         public static byte choices;
+        public static string Data = "HOANGTRAN\\JACKANDY1114";
 
         static void Main()
         {
@@ -17,7 +30,7 @@ namespace adonet
             {
                 try
                 {
-                    choices = Handing.menu();
+                    choices = menu();
                 }
                 catch (System.Exception)
                 {
@@ -27,55 +40,55 @@ namespace adonet
                 {
                     case 1:
                         {
-                            Handing.program1();
+                            program1();
                             break;
                         }
                     case 2:
                         {
-                            Handing.program2(@"select * from dbo.Student");
+                            program2(@"select * from dbo.Student");
                             break;
                         }
                     case 3:
                         {
-                            Handing.program3();
+                            program3();
                             break;
                         }
                     case 4:
                         {
-                            Handing.program4();
+                            program4();
                             break;
                         }
                     case 5:
                         {
-                            Handing.program2(@"select * from Student Order by Mark DESC");
+                            program2(@"select * from Student Order by Mark DESC");
                             break;
                         }
                     case 6:
                         {
-                            Handing.program2(@"select top 5 * from Student Order by Mark DESC");
+                            program2(@"select top 5 * from Student Order by Mark DESC");
                             break;
                         }
                     case 7:
                         {
-                            Handing.program7();
+                            program7();
                             break;
                         }
                     case 8:
                         {
-                            Handing.program8();
+                            program8();
                             break;
                         }
 
                     case 0:
                         {
-                            Handing.endingProgram();
+                            endingProgram();
                             System.Environment.Exit(0);//Thoát chương trình
 
                             break;
                         }
                     default:
                         {
-                            Handing.notificationError();//Xuất thông báo nhập lỗi
+                            notificationError();//Xuất thông báo nhập lỗi
                             break;
                         }
                 }

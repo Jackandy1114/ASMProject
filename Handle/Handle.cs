@@ -3,6 +3,7 @@ using System.Data.Common;
 //NOTE download Data.SqlClient Packages on nuget.org by command: dotnet add package System.Data.SqlClient
 using System.Data.SqlClient; //NOTE in .netcore 6 data.SqlClient is no longer available
 using static System.Console;
+using static adonet.Program;
 namespace adonet
 {
     public class Handing
@@ -17,7 +18,7 @@ namespace adonet
             {
                 try
                 {
-                    choices = Handing.menuProgram1();
+                    choices = menuProgram1();
                 }
                 catch (System.Exception)
                 {
@@ -57,7 +58,7 @@ namespace adonet
         public static void program1_1()
         {
 
-            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -85,7 +86,7 @@ namespace adonet
         }
         public static void program1_2()
         {
-            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -142,7 +143,7 @@ values ({cls.IdClass}, N'{cls.NameClass}')
         }
         public static void program1_3() //REVIEW nhập danh sách student và class
         {
-            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -206,7 +207,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
         #region Output
         public static void program2(string CommandSQL) //REVIEW xuất danh sach đồng thời xuất xếp loại
         {
-            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -381,7 +382,7 @@ select * from student where StId ={StId}");
                         }
                     case 4:
                         {
-                            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                             //NOTE sqlServer infomation connect
 
                             using var connection = new SqlConnection(sqlStringConnection);
@@ -411,7 +412,7 @@ select * from student where StId ={StId}");
                     case 5:
                         {
                             int numberClassID;
-                            var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                             //NOTE sqlServer infomation connect
                             using var connection = new SqlConnection(sqlStringConnection);
                             connection.Open();//NOTE open connection C# to SQLserver
@@ -483,7 +484,7 @@ select * from student where StId ={StId}");
                FileInfo file = new FileInfo("Test_Out\\Asm_C#2.txt");
                using (StreamWriter writer = file.AppendText())
                {
-                   var sqlStringConnection = "Data Source=HOANGTRAN\\JACKANDY1114;Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                   var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
                    //NOTE sqlServer infomation connect
 
                    using var connection = new SqlConnection(sqlStringConnection);
