@@ -18,7 +18,7 @@ namespace adonet
             {
                 try
                 {
-                    choices = menuProgram1();
+                    choices = menu(1);
                 }
                 catch (System.Exception)
                 {
@@ -58,7 +58,7 @@ namespace adonet
         public static void program1_1()
         {
 
-            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -86,7 +86,7 @@ namespace adonet
         }
         public static void program1_2()
         {
-            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -143,7 +143,7 @@ values ({cls.IdClass}, N'{cls.NameClass}')
         }
         public static void program1_3() //REVIEW nhập danh sách student và class
         {
-            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -207,7 +207,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
         #region Output
         public static void program2(string CommandSQL) //REVIEW xuất danh sach đồng thời xuất xếp loại
         {
-            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             //NOTE sqlServer infomation connect
 
             using var connection = new SqlConnection(sqlStringConnection);
@@ -232,7 +232,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
             dataReader_local.Close();
             connection.Close();
             centerWrite(32);
-            
+
             WriteLine("Connection to database is " + connection.State);
             notification1();
         }
@@ -257,7 +257,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
                 Write("Nhập khoảng điểm b: ");
                 test = Double.TryParse(ReadLine(), out mark);
             } while (test == false || mark < 0 || mark > 10);
-            
+
             Mark_b = mark;
             if (Mark_b < Mark_a)
             {
@@ -274,7 +274,7 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
             {
                 try
                 {
-                    choices = menuProgram4();
+                    choices = menu(4);
                 }
                 catch (System.Exception)
                 {
@@ -382,7 +382,7 @@ select * from student where StId ={StId}");
                         }
                     case 4:
                         {
-                            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
                             //NOTE sqlServer infomation connect
 
                             using var connection = new SqlConnection(sqlStringConnection);
@@ -412,7 +412,7 @@ select * from student where StId ={StId}");
                     case 5:
                         {
                             int numberClassID;
-                            var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
                             //NOTE sqlServer infomation connect
                             using var connection = new SqlConnection(sqlStringConnection);
                             connection.Open();//NOTE open connection C# to SQLserver
@@ -484,7 +484,7 @@ select * from student where StId ={StId}");
                FileInfo file = new FileInfo("Test_Out\\Asm_C#2.txt");
                using (StreamWriter writer = file.AppendText())
                {
-                   var sqlStringConnection = $"Data Source={Program.Data};Initial Catalog=ASM_C#2;User ID=sa;Password=iloveuzienoi1114";
+                   var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
                    //NOTE sqlServer infomation connect
 
                    using var connection = new SqlConnection(sqlStringConnection);
@@ -530,10 +530,24 @@ Group by Class.IdClass, Class.NameClass;
              });
             DTB.Start(TaskScheduler.Current);
             t2.Start();
-
+        }
+        public static bool program8()
+        {
+            User_Pass = Server.InputServer().Split("|");
+            var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
+            using var connection = new SqlConnection(sqlStringConnection);
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception)
+            {
+                program8();
+            }
+            return connection.State.ToString() != "Open";
         }
 
-        public static void program8()
+        public static void program9()
         {
             string J_A = @"
                 Chào bạn tui là Trần Phú Đạt
@@ -544,11 +558,11 @@ Group by Class.IdClass, Class.NameClass;
             Dành cho sinh viền theo .Net Nên chúng mình 9 thành viên đầu tiên là sinh viên của Khóa 17
             đã đồng lòng cùng xây dựng lên Dotnet Universe cùng cố gắng để không phải ai cô đơn học code.
             Gồm:
-            - J.A: Trần Phú Đạt,
-            - Thái Dân,
+            - J.A:        Trần Phú Đạt,
+            - YinGH:      Thái Dân,
             - Đăng Duy,
-            - Gia Hân,
-            - Như Ý,
+            - Hannee:     Gia Hân,
+            - Như Ý Lake: Như Ý,
             - Văn Quỳnh,
             - Tuyết Nhi,
             - Sâm Chấn,
@@ -626,13 +640,16 @@ Group by Class.IdClass, Class.NameClass;
         #endregion
         /*Xử lý giao diện và thông báo cho chương trình*/
         #region UI
-        public static byte menu()
+        public static byte menu(int SelectMenu)
         {
             Clear();
             string menu = "";
             ForegroundColor = ConsoleColor.Yellow;
-
-            menu = @"
+            switch (SelectMenu)
+            {
+                case 0:
+                    {
+                        menu = @"
 [[========================================================================================]] 
 ||                     _   .-')       ('-.       .-') _                                   ||    
 ||                    ( '.( OO )_   _(  OO)     ( OO ) )                                  ||
@@ -651,54 +668,16 @@ Group by Class.IdClass, Class.NameClass;
 ||                            5.  Sắp xếp Student theo Mark cao đến thấp                  ||
 ||                            6.  Xuất 5 Student có Mark cao nhất                         ||
 ||                            7.  Tính điểm trung bình và ghi vào file                    ||
-||                            8.  Thông tin người thực hiện                               ||
+||                            8.  Thay đổi server                                         ||
+||                            9.  Thông tin người thực hiện                               ||
 ||________________________________________________________________________________________||
 ||                                0. Thoát chương trình                                   ||
 [[========================================================================================]]";
-            WriteLine(menu);
-            ResetColor();
-            centerWrite(6); Write("Nhập: ");
-            byte choices = Convert.ToByte(ReadLine());
-            return choices;
-        }
-        public static byte menuProgram4()
-        {
-            Clear();
-            string menu = "";
-            ForegroundColor = ConsoleColor.Yellow;
-
-            menu = @"
-[[========================================================================================]] 
-||                     _   .-')       ('-.       .-') _                                   ||    
-||                    ( '.( OO )_   _(  OO)     ( OO ) )                                  ||
-||                     ,--.   ,--.)(,------.,--./ ,--,' ,--. ,--.                         ||
-||                     |   `.'   |  |  .---'|   \ |  |\ |  | |  |                         ||
-||                     |         |  |  |    |    \|  | )|  | | .-')                       ||
-||                     |  |'.'|  | (|  '--. |  .     |/ |  |_|( OO )                      ||
-||                     |  |   |  |  |  .--' |  |\    |  |  | | `-' /                      ||
-||                     |  |   |  |  |  `---.|  | \   | ('  '-'(_.-'                       ||
-||                     `--'   `--'  `------'`--'  `--'   `-----'                          ||
-||----------------------------------------------------------------------------------------||
-||                            1.  Tra cứu thông tin Student                               ||
-||                            2.  Cập nhật thông tin Student                              ||
-||________________________________________________________________________________________||
-||                                  0. Trở về MENU                                        ||
-[[========================================================================================]]";
-            WriteLine(menu);
-            ResetColor();
-
-            centerWrite(6); Write("Nhập: ");
-
-            byte choices = Convert.ToByte(ReadLine());
-            return choices;
-        }
-        public static byte menuProgram1()
-        {
-            Clear();
-            string menu = "";
-            ForegroundColor = ConsoleColor.Yellow;
-
-            menu = @"
+                        break;
+                    }
+                case 1:
+                    {
+                        menu = @"
 [[========================================================================================]] 
 ||                     _   .-')       ('-.       .-') _                                   ||    
 ||                    ( '.( OO )_   _(  OO)     ( OO ) )                                  ||
@@ -716,14 +695,37 @@ Group by Class.IdClass, Class.NameClass;
 ||________________________________________________________________________________________||
 ||                                  0. Trở về MENU                                        ||
 [[========================================================================================]]";
+                        break;
+                    }
+                case 4:
+                    {
+                        menu = @"
+[[========================================================================================]] 
+||                     _   .-')       ('-.       .-') _                                   ||    
+||                    ( '.( OO )_   _(  OO)     ( OO ) )                                  ||
+||                     ,--.   ,--.)(,------.,--./ ,--,' ,--. ,--.                         ||
+||                     |   `.'   |  |  .---'|   \ |  |\ |  | |  |                         ||
+||                     |         |  |  |    |    \|  | )|  | | .-')                       ||
+||                     |  |'.'|  | (|  '--. |  .     |/ |  |_|( OO )                      ||
+||                     |  |   |  |  |  .--' |  |\    |  |  | | `-' /                      ||
+||                     |  |   |  |  |  `---.|  | \   | ('  '-'(_.-'                       ||
+||                     `--'   `--'  `------'`--'  `--'   `-----'                          ||
+||----------------------------------------------------------------------------------------||
+||                            1.  Tra cứu thông tin Student                               ||
+||                            2.  Cập nhật thông tin Student                              ||
+||________________________________________________________________________________________||
+||                                  0. Trở về MENU                                        ||
+[[========================================================================================]]";
+                        break;
+                    }
+            }
             WriteLine(menu);
             ResetColor();
-
             centerWrite(6); Write("Nhập: ");
-
             byte choices = Convert.ToByte(ReadLine());
             return choices;
         }
+
         public static byte menuProgram4_2(int id)
         {
             Clear();

@@ -19,18 +19,21 @@ namespace adonet
         //     return dataSource;
         // }
         public static byte choices;
-        public static string Data = "HOANGTRAN\\JACKANDY1114";
-
-        static void Main()
+        public static string[] User_Pass;
+        public static void Main()
         {
             Console.InputEncoding = Encoding.Unicode;//Để nhập tiếng việt
             Console.OutputEncoding = Encoding.Unicode;//Để xuất tiếng việt
-
+            bool Server_Connect = false;
             do
             {
+                if (Server_Connect == false)
+                {
+                    Server_Connect = program8();
+                }
                 try
                 {
-                    choices = menu();
+                    choices = menu(0);
                 }
                 catch (System.Exception)
                 {
@@ -75,7 +78,12 @@ namespace adonet
                         }
                     case 8:
                         {
-                            program8();
+                            Server_Connect = program8();
+                            break;
+                        }
+                    case 9:
+                        {
+                            program9();
                             break;
                         }
 
