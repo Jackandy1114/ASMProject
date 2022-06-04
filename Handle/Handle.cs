@@ -376,7 +376,7 @@ select * from student where StId ={StId}");
                                 email = ReadLine();
                             } while (validateEmail(email) == false);
                             program2(@$"
-update Student set Mark = {email} where StId = {StId};
+update Student set Email = {email} where StId = {StId};
 select * from student where StId ={StId}");
                             break;
                         }
