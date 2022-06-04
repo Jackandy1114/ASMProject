@@ -209,7 +209,6 @@ values ({sv.StId},N'{sv.Name}',{sv.Mark},'{sv.Email}',{sv.idClass});
         {
             var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             //NOTE sqlServer infomation connect
-
             using var connection = new SqlConnection(sqlStringConnection);
             connection.Open();//NOTE open connection C# to SQLserver
             centerWrite(30); //NOTE Căng giữa chữ
@@ -372,11 +371,11 @@ select * from student where StId ={StId}");
                             string? email;
                             do
                             {
-                                Write("Nhập email: ");
+                                WriteLine("Nhập email mới: ");
                                 email = ReadLine();
                             } while (validateEmail(email) == false);
                             program2(@$"
-update Student set Email = {email} where StId = {StId};
+update Student set Email = '{email}' where StId = {StId};
 select * from student where StId ={StId}");
                             break;
                         }
@@ -401,11 +400,11 @@ select ISNULL(max(IdClass),0) as maxID from class
                             int idTemp;
                             do
                             {
-                                Write("Nhập idClass: ");
+                                WriteLine("Nhập idClass mới: ");
                                 test = int.TryParse(ReadLine(), out idTemp);
                             } while (idTemp > numberClassID || test == false);
                             program2(@$"
-update Student set Mark = {idTemp} where StId = {StId};
+update Student set IdClass = {idTemp} where StId = {StId};
 select * from student where StId ={StId}");
                             break;
                         }
@@ -533,6 +532,7 @@ Group by Class.IdClass, Class.NameClass;
         }
         public static bool program8()
         {
+
             User_Pass = Server.InputServer().Split("|");
             var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
             using var connection = new SqlConnection(sqlStringConnection);
@@ -542,7 +542,7 @@ Group by Class.IdClass, Class.NameClass;
             }
             catch (Exception)
             {
-                Program.Server_Connect = program8();
+                return Server_Connect = false;
             }
             return connection.State.ToString() == "Open";
         }
