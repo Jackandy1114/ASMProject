@@ -16,33 +16,15 @@ namespace adonet
             Data = Console.ReadLine();
             Console.Write("Nhập Password: ");
             Pass = Console.ReadLine();
-            Data =""; //NOTE TESTING
+            Data = ""; //NOTE TESTING
             if (Data == "")
             {
                 Data = "HOANGTRAN\\JACKANDY1114";
-                // Pass = "iloveuzienoi1114";
+                // Pass = "iloveuzienoi1114"; 
             }
             string[] strings = Data.Split("\\");
             string.Concat(strings[0], "\\", strings[1]);
-            return Pass==""? String.Concat(Data, "|","Integrated Security=True"):String.Concat(Data, "|","User ID=sa;Password=", Pass);
+            return Pass == "" ? String.Concat(Data, "|", "Integrated Security=True") : String.Concat(Data, "|", "User ID=sa;Password=", Pass);
         }
     }
 }
-
-/*
-Trần Hoàng
-9
-ackandy249@gmail.com
-1
-y
-Trần Hoàng
-7.2
-andy249@gmail.com
-1
-y
-Trần Đạt
-5.2
-jack@gmail.com
-2
-n
-*/

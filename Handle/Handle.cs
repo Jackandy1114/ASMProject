@@ -542,9 +542,9 @@ Group by Class.IdClass, Class.NameClass;
             }
             catch (Exception)
             {
-                program8();
+                Program.Server_Connect = program8();
             }
-            return connection.State.ToString() != "Open";
+            return connection.State.ToString() == "Open";
         }
 
         public static void program9()

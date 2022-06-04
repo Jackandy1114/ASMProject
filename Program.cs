@@ -19,12 +19,12 @@ namespace adonet
         //     return dataSource;
         // }
         public static byte choices;
+        public static bool Server_Connect = false;
         public static string[] User_Pass;
         public static void Main()
         {
             Console.InputEncoding = Encoding.Unicode;//Để nhập tiếng việt
             Console.OutputEncoding = Encoding.Unicode;//Để xuất tiếng việt
-            bool Server_Connect = false;
             do
             {
                 if (Server_Connect == false)
