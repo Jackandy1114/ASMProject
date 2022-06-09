@@ -7,17 +7,7 @@ namespace adonet
 {
     class Program
     {
-        // public static string dataSource()
-        // {
-        //     centerWrite(17);
-        //     Console.WriteLine("Nhập tên server: ");
-        //     string dataSource = Console.ReadLine();
-        //     string[] strings = dataSource.Split("\\");
-        //     strings[0] = strings[0] + "\\\\";
-        //     dataSource = string.Concat(strings[0], strings[1]);
-        //     Console.WriteLine(dataSource);
-        //     return dataSource;
-        // }
+
         public static byte choices = 13;
         public static bool Server_Connect = false;
         public static string[] User_Pass;
@@ -123,5 +113,5 @@ Trần Đạt
 5.2
 jack@gmail.com
 2
-
+n
 */

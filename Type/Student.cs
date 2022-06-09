@@ -11,6 +11,7 @@ namespace adonet
         public double Mark { get; private set; }
         public string? Email { get; private set; }
         public int idClass { get; private set; }
+
         public Student(int maxStudentID, int numberClassID)
         {
 
@@ -46,21 +47,3 @@ namespace adonet
 
     }
 }
-
-/*
-Trần Hoàng
-9
-ackandy249@gmail.com
-1
-y
-Trần Hoàng
-7.2
-andy249@gmail.com
-1
-y
-Trần Đạt
-5.2
-jack@gmail.com
-2
-n
-*/

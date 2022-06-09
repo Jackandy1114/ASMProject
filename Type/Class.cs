@@ -19,21 +19,3 @@ namespace adonet
         }
     }
 }
-
-/*
-Trần Hoàng
-9.2
-jackandy249@gmail.com
-1
-y
-Trần Hoàng
-7.2
-andy249@gmail.com
-1
-y
-Trần Đạt
-5.2
-jack@gmail.com
-2
-n
-*/
