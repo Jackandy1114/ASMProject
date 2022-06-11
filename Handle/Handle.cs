@@ -453,83 +453,102 @@ select * from student where StId ={StId}");
         #endregion
         /*Sử dụng lập trình bất đồng bộ vừa tính điểm trung bình vừa lưu dữ liệu vào file*/
         #region ASync
-        public static void program7()
+        public static async void program7()
         {
+            var Ts = new CancellationTokenSource();
+            CancellationToken ct = Ts.Token;
+
             DirectoryInfo dir = new DirectoryInfo("Test_Out");
             try
             {
                 //REVIEW check if dir Exists
                 if (dir.Exists)
                 {
-                    WriteLine("Directory Already Exists");
-                    WriteLine($"Directory Name : {dir.Name}");
-                    WriteLine($"Path : {dir.FullName}");
-                    WriteLine($"Directory is created on : {dir.CreationTime}");
-                    WriteLine($"Directory is Last Accessed on : {dir.LastAccessTime}");
                 }
                 else
                 {
                     dir.Create();
-                    centerWrite(30);
-                    WriteLine("Directory Created Successfully");
                 }
             }
             catch (DirectoryNotFoundException d)
             {
                 WriteLine(d.Message.ToString());
             }
-            Task DTB = new Task(() =>
-           {
-               FileInfo file = new FileInfo("Test_Out\\Asm_C#2.txt");
-               using (StreamWriter writer = file.AppendText())
-               {
-                   var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
-                   //NOTE sqlServer infomation connect
+            var DTB = new Task(() =>
+            {
 
-                   using var connection = new SqlConnection(sqlStringConnection);
-                   connection.Open();//NOTE open connection C# to SQLserver
+                FileInfo file = new FileInfo("Test_Out\\Asm_C#2.txt");
+                using (StreamWriter writer = file.AppendText())
+                {
+                    var sqlStringConnection = $"Data Source={User_Pass[0]};Initial Catalog=ASM_C#2;{User_Pass[1]}";
+                    //NOTE sqlServer infomation connect
 
-                   using DbCommand command = new SqlCommand();
-                   command.Connection = connection;
-                   command.CommandText = @$"
+                    using var connection = new SqlConnection(sqlStringConnection);
+                    connection.Open();//NOTE open connection C# to SQLserver
+
+                    using DbCommand command = new SqlCommand();
+                    command.Connection = connection;
+                    command.CommandText = @$"
 select Class.IdClass, Class.NameClass, AVG(Mark) as DTB 
 from Student inner join Class on Student.idClass = Class.idClass 
 Group by Class.IdClass, Class.NameClass;
 ";
-                   var dataReader_local = command.ExecuteReader();
-                   string col_1 = "IDclass", col_2 = "NameClass", col_3 = "DTB";
-                   writer.WriteLineAsync($"________________________________________\n| {col_1,-10} | {col_2,-10} | {col_3,-10} |");
-                   lock (dataReader_local)
-                   {
-                       while (dataReader_local.Read())
-                       {
-                           Thread.Sleep(400);
-                           writer.WriteLineAsync($"| {dataReader_local["IdClass"],-10} | {dataReader_local["NameClass"],-10} | {Math.Round(Convert.ToDouble(dataReader_local["DTB"]), 2),-10} |");
-                       }
-                       centerWrite(31);
-                       WriteLine("*********** Success ***********");
-                       dataReader_local.Close();
-                       connection.Close();
-                   }
+                    var dataReader_local = command.ExecuteReader();
+                    string col_1 = "IDclass", col_2 = "NameClass", col_3 = "DTB";
+                    writer.WriteLineAsync($"________________________________________\n| {col_1,-10} | {col_2,-10} | {col_3,-10} |");
+                    lock (dataReader_local)
+                    {
+                        while (dataReader_local.Read())
+                        {
+                            Thread.Sleep(400);
+                            writer.WriteLineAsync($"| {dataReader_local["IdClass"],-10} | {dataReader_local["NameClass"],-10} | {Math.Round(Convert.ToDouble(dataReader_local["DTB"]), 2),-10} |");
+                        }
+                        dataReader_local.Close();
+                        connection.Close();
+                        //    for (int i = 1; i < 100; i++)
+                        //    {
 
-               }
-           });
-            Thread t2 = new Thread(() =>
-             {
-                 lock (DTB)
-                 {
-                     string Dat = "TRẦN PHÚ ĐẠT";
-                     for (int i = 0; i < Dat.Length; i++)
-                     {
-                         Thread.Sleep(200);
-                         Console.Write(Dat[i]);
-                     }
-                     Console.WriteLine();
-                 }
-             });
-            DTB.Start(TaskScheduler.Current);
-            t2.Start();
+                        centerWrite(31);
+                        WriteLine("*********** Success ***********");
+                        Ts.Cancel();
+                        ct.ThrowIfCancellationRequested();
+                        if (ct.IsCancellationRequested)
+                        {
+                            // Clean up here, then...
+                            ct.ThrowIfCancellationRequested();
+                        }
+
+                    }
+                }
+            }, Ts.Token);
+            // Thread t2 = new Thread(() =>
+            //  {
+            //      lock (DTB)
+            //      {
+            //          string Dat = "TRẦN PHÚ ĐẠT";
+            //          for (int i = 0; i < Dat.Length; i++)
+            //          {
+            //              Thread.Sleep(200);
+            //              Console.Write(Dat[i]);
+            //          }
+            //          Console.WriteLine();
+            //      }
+            //  });
+            DTB.Start();
+            try
+            {
+                await DTB;
+            }
+            catch (OperationCanceledException e)
+            {
+                Console.WriteLine($"{nameof(OperationCanceledException)} thrown with message: {e.Message}");
+            }
+            finally
+            {
+                Ts.Dispose();
+            }            // t2.Start();
         }
+
         public static bool program8()
         {
 

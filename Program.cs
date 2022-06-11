@@ -10,7 +10,7 @@ namespace adonet
 
         public static byte choices = 13;
         public static bool Server_Connect = false;
-        public static string[] User_Pass;
+        public static string[] User_Pass = { };
         public static void Main()
         {
             Console.InputEncoding = Encoding.Unicode;//Để nhập tiếng việt
